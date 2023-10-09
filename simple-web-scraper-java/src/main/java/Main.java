@@ -103,7 +103,7 @@ public class Main {
         // the number of iteration executed
         int i = 1;
         // to limit the number to scrape to 5
-        int limit = 10;
+        int limit = 48;
 
         while (!pagesToScrape.isEmpty() && i < limit) {
             // registering the web scraping task
