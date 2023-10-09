@@ -4,6 +4,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +26,26 @@ public class Main {
         /*The Jsoup select() function apply the CSS selector strategy to retrieve all li.product on the web page. In details, Elements extends an ArrayList. So, you can easily iterate over it.*/
         Elements products = doc.select("li.product");
 
+        //list that will hold the product Data
+        List<PokemonProduct> pokemonProducts = new ArrayList<>();
 
+        // Datatypeof List Element list Element : target List
+        for (Element product : products) {
+
+            PokemonProduct pokemonProduct = new PokemonProduct();
+
+            // extracting the data of interest from the product HTML element
+            // and storing it in pokemonProduct
+            pokemonProduct.setUrl(product.selectFirst("a").attr("href"));
+            pokemonProduct.setImage(product.selectFirst("img").attr("src"));
+            pokemonProduct.setName(product.selectFirst("h2").text());
+            pokemonProduct.setPrice(product.selectFirst("span").text());
+
+            // adding pokemonProduct to the list of the scraped products
+            pokemonProducts.add(pokemonProduct);
+
+        }
+
+        System.out.println(pokemonProducts);
     }
 }
