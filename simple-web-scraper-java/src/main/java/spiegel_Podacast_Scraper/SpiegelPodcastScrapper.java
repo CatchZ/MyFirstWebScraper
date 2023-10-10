@@ -14,6 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 public class SpiegelPodcastScrapper {
     private static final String URL = "https://www.spiegel.de/audio/";
+    private static final String PODCASTTITELSELECTOR = "a.group.block.text-black";
+
+
 
     public static void spiegelPodcastScrapper() {
         Document doc;
@@ -28,8 +31,10 @@ public class SpiegelPodcastScrapper {
             throw new RuntimeException(e);
         }
 
-        Elements h1 = doc.select("h1");
-        System.out.println(h1);
+        Elements h1 = doc.select( PODCASTTITELSELECTOR);
+
+        System.out.println("result:");
+        System.out.println(h1.toString());
     }
 
 
