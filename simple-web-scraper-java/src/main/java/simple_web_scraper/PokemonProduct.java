@@ -1,3 +1,5 @@
+package simple_web_scraper;
+
 public class PokemonProduct {
     //alle Datenfelder die Gespeichert werden sollen
     private String url;
