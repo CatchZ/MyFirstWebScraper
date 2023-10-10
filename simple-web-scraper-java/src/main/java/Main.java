@@ -9,10 +9,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import  simple_web_scraper.Simple_Web_Scraper;
+import spiegel_Podacast_Scraper.*;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-       Simple_Web_Scraper.web_Scraper();
+    //   Simple_Web_Scraper.web_Scraper();
+        SpiegelPodcastScrapper.spiegelPodcastScrapper();
+
     }
 
 }
