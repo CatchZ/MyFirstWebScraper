@@ -12,6 +12,7 @@ import java.util.LinkedList;
 public class SpiegelPodcastScrapper {
 
     private static final String PODCASTTITELSELECTOR = "a.group.block.text-black";
+    private static final String SPIEGEL_AUDIO_URL = "https://www.spiegel.de/audio/";
 
 
 
@@ -39,6 +40,16 @@ public class SpiegelPodcastScrapper {
             resultList.add(podcastElement.attr("href"));
         }
         resultList.forEach(e->System.out.println(e));
+        return resultList;
+    }
+
+    public static LinkedList<Podcast> getAllSpiegelPodcasts(){
+        Document spiegelDocument = getDocumentOfURl(SPIEGEL_AUDIO_URL);
+        Elements podcastElements = spiegelPodcastSelector(spiegelDocument);
+        LinkedList<Podcast> resultList = new LinkedList<>();
+        for(Element podcastElement:podcastElements){
+            resultList.add(new Podcast(podcastElement.attr("title"),null));
+        }
         return resultList;
     }
 

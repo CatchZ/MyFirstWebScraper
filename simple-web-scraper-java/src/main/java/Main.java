@@ -1,5 +1,7 @@
 import spiegel_Podacast_Scraper.*;
 
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
      final String SPIEGEL_AUDIO_URL = "https://www.spiegel.de/audio/";
@@ -15,6 +17,8 @@ public class Main {
             )
     );
 
+        LinkedList<Podcast>Podcastlist= SpiegelPodcastScrapper.getAllSpiegelPodcasts();
+        Podcastlist.forEach(e->System.out.println(e.getTitel()));
 
     }
 
