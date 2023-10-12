@@ -16,7 +16,7 @@ public class SpiegelPodcastScrapper {
 
 
 
-    public static Document getDocumentOfURl(String url) {
+    private static Document getDocumentOfURl(String url) {
      Document document ;
         try {
             // fetching the target website
@@ -30,11 +30,11 @@ public class SpiegelPodcastScrapper {
         return document;
     }
 
-    public static Elements spiegelPodcastSelector(Document document){
+     private static Elements spiegelPodcastSelector(Document document){
         return document.select( PODCASTTITELSELECTOR);
     }
-
-    public static LinkedList<String> generateSpiegelPodcastUrlList(Elements podcastElements){
+@Deprecated
+    private static LinkedList<String> generateSpiegelPodcastUrlList(Elements podcastElements){
         LinkedList <String> resultList = new LinkedList<>();
         for(Element podcastElement : podcastElements){
             resultList.add(podcastElement.attr("href"));
