@@ -17,9 +17,15 @@ public class Main {
             )
     );
 
-        LinkedList<Podcast>Podcastlist= SpiegelPodcastScrapper.getAllSpiegelPodcasts();
-        Podcastlist.forEach(e->System.out.println(e.getTitel()));
+        LinkedList<Podcast>PodcastList= SpiegelPodcastScrapper.getAllSpiegelPodcasts();
+        PodcastList.forEach(
+                    e->{System.out.println("Titel: "+e.getTitel()+"\n Episodes:");
+                    e.getEpisodes().forEach(e2->System.out.println(e2.getTitel()));}
+        );
+        LinkedList<Episode> EpisodeList = SpiegelPodcastScrapper.getAllEpisodesOFPodcast("https://www.spiegel.de/thema/im-verhoer/");
+        //EpisodeList.forEach(e->System.out.println(e.getTitel()));
 
     }
+
 
 }

@@ -4,18 +4,19 @@ import java.util.LinkedList;
 
 public class Podcast {
     String Titel;
+    LinkedList<Episode> Episodes;
 
     public String getTitel() {
         return Titel;
     }
 
-    public LinkedList<Podcast> getEpisodes() {
+    public LinkedList<Episode> getEpisodes() {
         return Episodes;
     }
 
-    LinkedList<Podcast> Episodes;
 
-    public Podcast(String titel, LinkedList<Podcast> episodes) {
+
+    public Podcast(String titel, LinkedList<Episode> episodes) {
         Titel = titel;
         Episodes = episodes;
     }

@@ -48,9 +48,24 @@ public class SpiegelPodcastScrapper {
         Elements podcastElements = spiegelPodcastSelector(spiegelDocument);
         LinkedList<Podcast> resultList = new LinkedList<>();
         for(Element podcastElement:podcastElements){
-            resultList.add(new Podcast(podcastElement.attr("title"),null));
+            resultList.add(
+                    new Podcast(
+                            podcastElement.attr("title"),
+                            getAllEpisodesOFPodcast(podcastElement.attr("href"))
+                    )
+            );
         }
         return resultList;
+    }
+
+    public static LinkedList<Episode>getAllEpisodesOFPodcast(String episodesURl){
+        Document episodesDocument = getDocumentOfURl(episodesURl);
+        Elements episodeElements = episodesDocument.select("article");
+        LinkedList<Episode> resultList = new LinkedList<>();
+        for(Element podcastElement:episodeElements){
+            resultList.add(new Episode(podcastElement.attr("aria-label")));
+        }
+        return  resultList;
     }
 
 
